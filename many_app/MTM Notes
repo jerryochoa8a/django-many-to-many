@@ -1,0 +1,70 @@
+shell
+
+>>> from many_app.models import Book,Author
+
+>>> Book.objects.create(title="C Sharp", desc="book of c sharp")
+>>> Book.objects.create(title="Java", desc="book of java")
+>>> Book.objects.create(title="Python", desc="book of python")
+>>> Book.objects.create(title="PHP", desc="book of php")
+>>> Book.objects.create(title="Ruby", desc="book of ruby")
+
+>>> Author.objects.create(first_name="Jane", last_name="Austen")
+>>> Author.objects.create(first_name="Emily", last_name="Dickinson")
+>>> Author.objects.create(first_name="Fyodor", last_name="Dostoevsky")
+>>> Author.objects.create(first_name="William", last_name="Shakespeare")
+>>> Author.objects.create(first_name="Lau", last_name="Tzu")
+
+>>> B1=Book.objects.get(id=1)
+>>> B1.title="C#"
+>>> B1.save()
+
+>>> B1.save()
+>>> A4=Author.objects.get(id=4)
+>>> A4.first_name="bill"
+>>> A4.save()
+
+>>> A1=Author.objects.get(id=1)
+>>> B1=Book.objects.get(id=1)
+>>> B2=Book.objects.get(id=2)
+>>> A1.books.add(B1)
+>>> A1.save()
+>>> A1.books.add(B2)
+>>> A1.save()
+
+>>> A2= Author.objects.get(id=2)
+>>> B3=Book.objects.get(id=3)
+>>> A2.books.add(B1)
+>>> A2.save()
+>>> A2.books.add(B2)
+>>> A2.save()
+>>> A2.books.add(B3)
+>>> A2.save()
+
+>>> B4=Book.objects.get(id=4)
+>>> A3= Author.objects.get(id=3)
+>>> A3.books.add(B1)
+>>> A3.books.add(B2)
+>>> A3.books.add(B3)
+>>> A3.books.add(B4)
+>>> A3.save()
+
+>>> A4= Author.objects.get(id=4)
+>>> B5= Book.objects.get(id=5)
+>>> A4.books.add(B1)
+>>> A4.books.add(B2)
+>>> A4.books.add(B3)
+>>> A4.books.add(B4)
+>>> A4.books.add(B5)
+>>> A4.save()
+
+>>> B3.authors.all()
+
+>>> A2.books.remove(B3)
+>>> A2.save()
+
+>>> A5 = Author.objects.get(id=5)
+>>> A5.books.add(B2)
+>>> A5.save()
+
+>>> B5.authors.all()
+

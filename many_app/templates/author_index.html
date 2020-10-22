@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/addauthor" method="post">
+        <h1>Add Author</h1>
+        <h3>First Name:</h3>
+        <input type="text" name="first_name">
+        <h3>Last Name:</h3>
+        <input type="text" name="last_name">
+        {% csrf_token %}
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+
+    <h1>Author List</h1>
+    <table>
+        <thead>
+            <th>ID</th>
+            <th>first name</th>
+            <th>last name</th>
+            <th>Action</th>
+        </thead>
+        {% for author in authors %}
+            <tr>
+                <td>{{author.id}}</td>
+                <td>{{author.first_name}}</td>
+                <td>{{author.last_name}}</td>
+                <td><a href="/author/{{author.id}}">View</a></td>
+                <td><a href="/author/{{author.id}}/delete">Delete</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    <div>
+        <a href="/">Back to add books page!</a>
+    </div>
+    
+</body>
+</html>
